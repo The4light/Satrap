@@ -364,74 +364,77 @@ export default function HomePage() {
         </div>
       </section>
       
-      {/* ─── 6. LATEST UPDATES (NEWSLETTER / GALLERY FEED) ──────────── */}
-      <section className="py-24 bg-[#f8fafc] border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#006398]">Stay Informed</span>
-              <h2 className="font-serif text-3xl font-bold text-[#131b2e] mt-1">Latest Updates & News</h2>
-            </div>
-            <Link href="/news" className="text-xs font-bold uppercase tracking-wider text-[#006398] hover:text-[#ba1a1a] transition-colors flex items-center gap-1 border-b border-[#006398]/30 pb-0.5">
-              Open News Gallery
-              <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
-            </Link>
-          </div>
+     {/* ─── 6. LATEST UPDATES (NEWSLETTER / GALLERY FEED) ──────────── */}
+<section className="py-24 bg-[#f8fafc] border-t border-slate-200/60">
+  <div className="max-w-7xl mx-auto px-6 sm:px-12">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+      <div>
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#006398]">Stay Informed</span>
+        <h2 className="font-serif text-3xl font-bold text-[#131b2e] mt-1">Latest Updates & News</h2>
+      </div>
+      <Link href="/news" className="text-xs font-bold uppercase tracking-wider text-[#006398] hover:text-[#ba1a1a] transition-colors flex items-center gap-1 border-b border-[#006398]/30 pb-0.5">
+        Open News Gallery
+        <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
+      </Link>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-slate-200/60 rounded-sm overflow-hidden flex flex-col group shadow-xs">
-              <div className="h-48 bg-slate-200 overflow-hidden relative">
-                <div className="absolute top-3 left-3 bg-[#006398] text-white font-mono text-[10px] uppercase font-bold px-2 py-1 rounded-xs tracking-wider z-10">Announcement</div>
-                <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('/news.jpg')` }} />
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">Academic Year 2025/2026</p>
-                  <h3 className="text-base font-bold font-serif text-[#131b2e] mb-3 line-clamp-2 group-hover:text-[#006398] transition-colors">Our Ultra-Modern Renovation Upgrade Project Launch</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">Satrop Schools marks a bold new chapter with state-of-the-art interactive playground modules and pristine instructional lab kits built for immediate integration.</p>
-                </div>
-                <span className="text-xs font-bold text-[#ba1a1a] mt-6 inline-block uppercase tracking-wider">Read Article</span>
-              </div>
-            </div>
-
-            <div className="bg-white border border-slate-200/60 rounded-sm overflow-hidden flex flex-col group shadow-xs">
-              <div className="h-48 bg-slate-200 overflow-hidden relative">
-                <div className="absolute top-3 left-3 bg-[#ba1a1a] text-white font-mono text-[10px] uppercase font-bold px-2 py-1 rounded-xs tracking-wider z-10">Admissions</div>
-                <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('news2.jpg')` }} />
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">Enrollment Open</p>
-                  <h3 className="text-base font-bold font-serif text-[#131b2e] mb-3 line-clamp-2 group-hover:text-[#006398] transition-colors">Securing Entry Slots For Modern Curriculum Tracking</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">Registration parameters are active for parent partnerships. Secure tailored placement tracks structured directly on personal moral code parameters.</p>
-                </div>
-                <span className="text-xs font-bold text-[#ba1a1a] mt-6 inline-block uppercase tracking-wider">Read Article</span>
-              </div>
-            </div>
-
-            {/* Newsletter Subscription Card built into the roll flow */}
-            <div className="bg-[#131b2e] text-white border border-[#1d273f] rounded-sm p-8 flex flex-col justify-between relative overflow-hidden shadow-md">
-              <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#006398]/10 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <span className="material-symbols-outlined text-3xl text-[#5bb8fe] mb-4 block">mail_lock</span>
-                <h3 className="text-lg font-bold font-serif mb-2">Subscribe to News</h3>
-                <p className="text-xs text-slate-400 leading-relaxed mb-6">Receive priority operational letters, term dates, and specialized circular reports directly in your mail inbox.</p>
-              </div>
-              <div className="space-y-2">
-                <input 
-                  type="email" 
-                  placeholder="Parent's Email Address" 
-                  className="w-full bg-[#1c263f] text-xs font-medium text-white placeholder-slate-500 px-4 py-3 rounded-xs border border-slate-700/50 focus:outline-hidden focus:border-[#5bb8fe] transition-colors"
-                />
-                <button className="w-full bg-[#ba1a1a] hover:bg-[#93000a] text-white text-xs font-bold uppercase tracking-wider py-3 rounded-xs transition-colors">
-                  Join Newsletter
-                </button>
-              </div>
-            </div>
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      {/* CARD 1 Linked */}
+      <Link href="/news" className="bg-white border border-slate-200/60 rounded-sm overflow-hidden flex flex-col group shadow-xs transition-all hover:shadow-md">
+        <div className="h-48 bg-slate-200 overflow-hidden relative">
+          <div className="absolute top-3 left-3 bg-[#006398] text-white font-mono text-[10px] uppercase font-bold px-2 py-1 rounded-xs tracking-wider z-10">Announcement</div>
+          <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('/news.jpg')` }} />
         </div>
-      </section>
+        <div className="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">Academic Year 2025/2026</p>
+            <h3 className="text-base font-bold font-serif text-[#131b2e] mb-3 line-clamp-2 group-hover:text-[#006398] transition-colors">Our Ultra-Modern Renovation Upgrade Project Launch</h3>
+            <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">Satrop Schools marks a bold new chapter with state-of-the-art interactive playground modules and pristine instructional lab kits built for immediate integration.</p>
+          </div>
+          <span className="text-xs font-bold text-[#ba1a1a] mt-6 inline-block uppercase tracking-wider">Read Article</span>
+        </div>
+      </Link>
 
+      {/* CARD 2 Linked */}
+      <Link href="/news" className="bg-white border border-slate-200/60 rounded-sm overflow-hidden flex flex-col group shadow-xs transition-all hover:shadow-md">
+        <div className="h-48 bg-slate-200 overflow-hidden relative">
+          <div className="absolute top-3 left-3 bg-[#ba1a1a] text-white font-mono text-[10px] uppercase font-bold px-2 py-1 rounded-xs tracking-wider z-10">Admissions</div>
+          <div className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('news2.jpg')` }} />
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-2">Enrollment Open</p>
+            <h3 className="text-base font-bold font-serif text-[#131b2e] mb-3 line-clamp-2 group-hover:text-[#006398] transition-colors">Securing Entry Slots For Modern Curriculum Tracking</h3>
+            <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">Registration parameters are active for parent partnerships. Secure tailored placement tracks structured directly on personal moral code parameters.</p>
+          </div>
+          <span className="text-xs font-bold text-[#ba1a1a] mt-6 inline-block uppercase tracking-wider">Read Article</span>
+        </div>
+      </Link>
+
+      {/* Newsletter Subscription Card (Remains fully functional locally) */}
+      <div className="bg-[#131b2e] text-white border border-[#1d273f] rounded-sm p-8 flex flex-col justify-between relative overflow-hidden shadow-md">
+        <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#006398]/10 rounded-full blur-xl pointer-events-none" />
+        <div>
+          <span className="material-symbols-outlined text-3xl text-[#5bb8fe] mb-4 block">mail_lock</span>
+          <h3 className="text-lg font-bold font-serif mb-2">Subscribe to News</h3>
+          <p className="text-xs text-slate-400 leading-relaxed mb-6">Receive priority operational letters, term dates, and specialized circular reports directly in your mail inbox.</p>
+        </div>
+        <div className="space-y-2">
+          <input 
+            type="email" 
+            placeholder="Parent's Email Address" 
+            className="w-full bg-[#1c263f] text-xs font-medium text-white placeholder-slate-500 px-4 py-3 rounded-xs border border-slate-700/50 focus:outline-hidden focus:border-[#5bb8fe] transition-colors"
+          />
+          <button className="w-full bg-[#ba1a1a] hover:bg-[#93000a] text-white text-xs font-bold uppercase tracking-wider py-3 rounded-xs transition-colors">
+            Join Newsletter
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* ─── 7. HIGH-IMPACT JOIN US TODAY CTA SECTION ────────────────── */}
       <section className="bg-[#131b2e] text-white py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#ba1a1a]/5 skew-x-12 transform translate-x-20 hidden md:block pointer-events-none" />

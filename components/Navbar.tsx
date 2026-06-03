@@ -14,13 +14,13 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
     { name: "Admission", href: "/admission" },
     { name: "Facilities", href: "/facilities" },
+    { name: "News", href: "/news" }, // Clean injection into matching tracking stack
     { name: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
-      // Close mobile menu on scroll
       if (window.scrollY > 40) setIsOpen(false);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -32,10 +32,8 @@ export default function Navbar() {
       <header
         className={`fixed z-50 transition-all duration-300 ease-in-out ${
           scrolled
-            ? // Pill state — floats in the middle of the screen
-              "top-3 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-max md:right-auto rounded-2xl shadow-lg shadow-black/10 border border-[#c6c6cd]/40 bg-[#f7f9fb]/90 backdrop-blur-lg"
-            : // Full-width state at top
-              "top-0 left-0 right-0 rounded-none border-b border-[#c6c6cd]/30 bg-[#f7f9fb]/70 backdrop-blur-md shadow-sm"
+            ? "top-3 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-max md:right-auto rounded-2xl shadow-lg shadow-black/10 border border-[#c6c6cd]/40 bg-[#f7f9fb]/90 backdrop-blur-lg"
+            : "top-0 left-0 right-0 rounded-none border-b border-[#c6c6cd]/30 bg-[#f7f9fb]/70 backdrop-blur-md shadow-sm"
         }`}
       >
         <div
@@ -67,7 +65,7 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* DESKTOP LINKS — hidden in pill on mobile, always shown on md+ */}
+          {/* DESKTOP LINKS */}
           <nav className="hidden md:flex items-center gap-6 ml-8">
             {navigationLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -114,7 +112,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* MOBILE FLYOUT — rendered outside header so it doesn't affect pill shape */}
+      {/* MOBILE FLYOUT */}
       {isOpen && (
         <div
           className={`fixed z-40 md:hidden bg-[#f7f9fb]/95 backdrop-blur-md border border-[#c6c6cd]/40 rounded-2xl shadow-lg px-5 py-4 space-y-3 transition-all duration-300 ${
