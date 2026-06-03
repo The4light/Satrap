@@ -40,7 +40,7 @@ export default function NewsGalleryPage() {
       date: "Coming Soon",
       excerpt: "Our state-of-the-art shock-absorbent artificial turf arena is scheduled to host its inaugural youth development tracks.",
       content: "Physical discipline forms an equal pillar of sound mental fortitude. Satrap Schools is proud to announce the final field alignments for our premium shock-absorbent mini turf layout arena. The facility will play host to track training routines, internal inter-house strategy sports leagues, and foundational coordination training paths built safely for multi-tiered age sets.",
-      image: "/playground4.jpg"
+      image: "/Playground4.jpg"
     },
     {
       id: 4,
