@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* School Uniform System Palette Mapping */
+  --color-uniform-blue: #0284c7;  /* Sky Blue shirt accents */
+  --color-uniform-gray: #64748b;  /* Slate Gray tones */
+  --color-uniform-red: #dc2626;   /* Tie Crimson Red */
+  --color-brand-dark: #0b1329;    /* Ultra-deep Navy backing from mock-up */
+  
+  /* Typography Tokens */
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* Helper layer for the high-end editorial headings */
+.font-display {
+  font-family: var(--font-serif);
 }
