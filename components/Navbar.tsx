@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Unified link dictionary to make matching clean and error-free
   const navigationLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
@@ -17,88 +17,124 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      // Close mobile menu on scroll
+      if (window.scrollY > 40) setIsOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#f7f9fb]/70 backdrop-blur-md border-b border-[#c6c6cd]/30 shadow-sm transition-shadow duration-200">
-      <div className="flex justify-between items-center h-20 px-5 md:px-16 max-w-7xl mx-auto">
-        
-        {/* BRAND EMBLEM SECTION */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#131b2e] rounded-full flex items-center justify-center overflow-hidden">
-            <img 
-              alt="Satrop Schools Logo" 
-              className="w-full h-full object-contain p-1" 
-              src="/satrap-logo.png" // Local public path updated here
-            />
+    <>
+      <header
+        className={`fixed z-50 transition-all duration-300 ease-in-out ${
+          scrolled
+            ? // Pill state — floats in the middle of the screen
+              "top-3 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-max md:right-auto rounded-2xl shadow-lg shadow-black/10 border border-[#c6c6cd]/40 bg-[#f7f9fb]/90 backdrop-blur-lg"
+            : // Full-width state at top
+              "top-0 left-0 right-0 rounded-none border-b border-[#c6c6cd]/30 bg-[#f7f9fb]/70 backdrop-blur-md shadow-sm"
+        }`}
+      >
+        <div
+          className={`flex justify-between items-center transition-all duration-300 ${
+            scrolled
+              ? "h-14 px-4 md:px-6"
+              : "h-20 px-5 md:px-16 max-w-7xl mx-auto"
+          }`}
+        >
+          {/* BRAND */}
+          <div className="flex items-center gap-2.5">
+            <div
+              className={`bg-[#131b2e] rounded-full flex items-center justify-center overflow-hidden transition-all duration-300 ${
+                scrolled ? "w-7 h-7" : "w-10 h-10"
+              }`}
+            >
+              <img
+                alt="Satrop Schools Logo"
+                className="w-full h-full object-contain p-1"
+                src="/satrap-logo.png"
+              />
+            </div>
+            <span
+              className={`font-semibold text-[#000000] tracking-tight font-serif transition-all duration-300 ${
+                scrolled ? "text-base" : "text-2xl"
+              }`}
+            >
+              Satrop Schools
+            </span>
           </div>
-          <span className="text-2xl font-semibold text-[#000000] tracking-tight font-serif">
-            Satrop Schools
-          </span>
+
+          {/* DESKTOP LINKS — hidden in pill on mobile, always shown on md+ */}
+          <nav className="hidden md:flex items-center gap-6 ml-8">
+            {navigationLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  className={`${
+                    isActive
+                      ? "text-[#006398] border-b-2 border-[#006398]"
+                      : "text-[#45464d] hover:text-[#006398]"
+                  } pb-1 text-sm font-semibold tracking-wider hover:scale-105 transition-all duration-200`}
+                  href={link.href}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* CTA + HAMBURGER */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/admission"
+              className={`hidden md:block bg-[#ba1a1a] text-white transition-all duration-200 hover:bg-[#93000a] hover:scale-105 active:scale-95 rounded-lg text-sm font-semibold tracking-wider text-center ${
+                scrolled ? "px-4 py-1.5 ml-4" : "px-6 py-2"
+              }`}
+            >
+              Join Us Today
+            </Link>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-[#191c1e] focus:outline-none"
+              aria-label="Toggle navigation menu"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+      </header>
 
-        {/* DESKTOP LINKS (Dynamic Active Line Tracking) */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navigationLinks.map((link) => {
-            const isActive = pathname === link.href;
-            
-            return (
-              <Link 
-                key={link.href}
-                className={`${
-                  isActive 
-                    ? "text-[#006398] border-b-2 border-[#006398]" 
-                    : "text-[#45464d] hover:text-[#006398]"
-                } pb-1 text-sm font-semibold tracking-wider hover:scale-105 transition-all duration-200`} 
-                href={link.href}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* REGISTRATION ACTION BUTTON (Crimson Red Base) */}
-        <div className="flex items-center gap-4">
-          <Link 
-            href="/admission"
-            className="hidden md:block bg-[#ba1a1a] text-white transition-all duration-200 hover:bg-[#93000a] hover:scale-105 active:scale-95 px-6 py-2 rounded-lg text-sm font-semibold tracking-wider text-center"
-          >
-            Join Us Today
-          </Link>
-          
-          {/* Mobile Menu Interactive Toggle Button */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-[#191c1e] focus:outline-none"
-            aria-label="Toggle navigation menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* MOBILE FLYOUT NAVIGATION MENU CONTAINER */}
+      {/* MOBILE FLYOUT — rendered outside header so it doesn't affect pill shape */}
       {isOpen && (
-        <div className="md:hidden bg-[#f7f9fb] border-b border-[#c6c6cd]/30 px-5 py-4 space-y-3 animate-fadeIn">
+        <div
+          className={`fixed z-40 md:hidden bg-[#f7f9fb]/95 backdrop-blur-md border border-[#c6c6cd]/40 rounded-2xl shadow-lg px-5 py-4 space-y-3 transition-all duration-300 ${
+            scrolled ? "top-20 left-4 right-4" : "top-[84px] left-0 right-0 rounded-none border-x-0"
+          }`}
+        >
           {navigationLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <Link 
+              <Link
                 key={link.href}
-                onClick={() => setIsOpen(false)} 
-                className={`block font-semibold text-sm ${isActive ? "text-[#006398]" : "text-[#45464d]"}`} 
+                onClick={() => setIsOpen(false)}
+                className={`block font-semibold text-sm py-1 ${isActive ? "text-[#006398]" : "text-[#45464d]"}`}
                 href={link.href}
               >
                 {link.name}
               </Link>
             );
           })}
-          <Link 
+          <Link
             onClick={() => setIsOpen(false)}
             href="/admission"
             className="block w-full bg-[#ba1a1a] text-white text-center py-2.5 rounded-lg text-sm font-semibold tracking-wider mt-2"
@@ -107,6 +143,6 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-    </header>
+    </>
   );
 }

@@ -134,49 +134,54 @@ export default function CampusFacilities() {
       </section>
 
       {/* ─── 4. HIGH-GRADE PREMIUM SHOCK-ABSORBENT TURF SPOTLIGHT ───────────── */}
-      <section className="bg-[#131b2e] text-white py-20 mb-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+       {/* ─── PREMIUM TURF ARENA SECTION ────────────────────────────────────────── */}
+      <section className="bg-[#131b2e] text-white py-24 mb-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-12">
           
-          <div className="lg:col-span-5 space-y-6">
+          {/* Text Header Content */}
+          <div className="max-w-3xl space-y-4">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#5bb8fe] block">
               {services.title} Spotlight
             </span>
-            <h2 className="font-serif text-3xl font-bold tracking-tight text-white leading-tight">
-              Premium Shock-Absorbent <br />Artificial Turf Arena
+            <h2 className="font-serif text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
+              Premium Shock-Absorbent Artificial Turf Arena
             </h2>
             <div className="w-12 h-1 bg-[#ba1a1a]" />
-            <p className="text-xs font-sans text-slate-300 leading-relaxed">
+            <p className="text-sm font-sans text-slate-300 leading-relaxed max-w-2xl">
               {services.highlightText}
             </p>
-            
-            {/* Value Check tags */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              {services.list.map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-white">
-                  <span className="material-symbols-outlined text-xs text-[#5bb8fe]">verified</span>
-                  <span className="text-[11px] uppercase tracking-wider font-medium text-slate-200">{item}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Side View Slider Mock Grid */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-4">
-            {services.images.slice(0, 4).map((imgUrl, imgIdx) => (
+          {/* Clean, Uniform 3-Column Visual Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { src: "/playground.jpg", alt: "Turf Arena Seating and Framework" },
+              { src: "/playground2.jpg", alt: "Playground Outdoor Play Structures" },
+              { src: "/playground4.jpg", alt: "Aerial Arena Ground Perspective" }
+            ].map((img, idx) => (
               <div 
-                key={imgIdx} 
-                className={`overflow-hidden border border-white/10 rounded-xs bg-slate-800 ${
-                  imgIdx === 0 ? "aspect-square" : "aspect-video lg:aspect-auto"
-                }`}
+                key={idx} 
+                className="overflow-hidden border border-white/10 rounded-md bg-slate-800 aspect-[4/3] group shadow-lg"
               >
                 <img 
-                  src={imgUrl} 
-                  alt={`Playground Surface Frame ${imgIdx + 1}`} 
-                  className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  src={img.src} 
+                  alt={img.alt} 
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
             ))}
           </div>
+
+          {/* Value Check Tags Base Row */}
+          <div className="pt-4 border-t border-white/5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {services.list.map((item, index) => (
+              <div key={index} className="flex items-center gap-2 text-white">
+                <span className="material-symbols-outlined text-xs text-[#5bb8fe]">verified</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-200">{item}</span>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 

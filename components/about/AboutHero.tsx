@@ -117,8 +117,8 @@ function FrameworkItem({ number, title, description }: FrameworkItemProps) {
 // ─── MAIN ABOUT PAGE COMPONENT ────────────────────────────────────────────────
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<"vision" | "mission">("vision");
-
-  const coreValues: PillarCardProps[] = [
+  
+const coreValues: PillarCardProps[] = [
     {
       icon: "gavel",
       title: "Integrity",
@@ -130,8 +130,8 @@ export default function AboutPage() {
       description: "Pushing limits of conventional learning setups to cross global benchmarks using integrated academic paths.",
     },
     {
-      icon: "shield_heart",
-      title: "Discipline",
+      icon: "shield_with_heart", // Fixed to valid material icon string
+      title: "Discipline",        // Restored your proper section title
       description: "Fostering respect for structured peer ecosystems, community ethical codes, and personal accountability.",
     },
   ];
@@ -182,67 +182,93 @@ export default function AboutPage() {
     <main className="font-sans bg-[#f7f9fb] text-[#191c1e] antialiased">
 
       {/* ─── 1. HERO/FOUNDATIONAL OVERVIEW ──────────────────────────────────── */}
-      <section className="relative flex flex-col lg:flex-row items-stretch overflow-hidden min-h-[700px] border-b border-slate-200">
-        <div className="w-full lg:w-1/2 flex items-center p-6 sm:p-12 md:p-16 z-10 bg-white">
-          <div className="max-w-2xl space-y-6">
-            <motion.span
-              className="block text-xs font-bold uppercase text-[#006398] tracking-[0.25em]"
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-            >
-              The Satrop Legacy
-            </motion.span>
-            
-            <motion.h1
-              className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#131b2e] tracking-tight leading-[1.1]"
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-            >
-              Nurturing Minds, <br />
-              <span className="italic font-normal text-[#006398]">Grounded in Excellence</span>
-            </motion.h1>
-            
-            <div className="w-12 h-1 bg-[#ba1a1a]" />
+    <section className="relative flex flex-col lg:flex-row items-stretch overflow-hidden min-h-[700px] border-b border-slate-200">
+      
+      {/* TEXT PANEL */}
+      <div className="w-full lg:w-1/2 flex items-center p-6 sm:p-12 md:p-16 z-10 bg-white">
+        <div className="max-w-2xl space-y-6">
+          <motion.span
+            className="block text-xs font-bold uppercase text-[#006398] tracking-[0.25em]"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
+            The Satrop Legacy
+          </motion.span>
 
-            <motion.div 
-              className="text-sm leading-relaxed text-slate-600 space-y-4 pt-2 font-sans"
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-            >
-              <p>
-                <strong>SATROP SCHOOLS</strong> is a government-approved institution providing excellent foundational education for children from early years through to Key Stage 2. We warmly welcome children from 3 months to 5 years for Creche and Pre-school education, focusing deeply on the <strong>Montessori Method of learning</strong>.
-              </p>
-              <p>
-                For children from 6 years to 11 years of age, we offer an excellent primary education based on a meticulously integrated <strong>British and Nigerian curricula</strong>.
-              </p>
-              <p>
-                Our class sizes are intentionally small—with just one or two classes per year group. This allows our academic staff to take great care to encourage, monitor, and stretch children based directly on their individual needs, personal growth tracks, and strengths.
-              </p>
-            </motion.div>
-          </div>
-        </div>
+          <motion.h1
+            className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#131b2e] tracking-tight leading-[1.1]"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
+            Nurturing Minds, <br />
+            <span className="italic font-normal text-[#006398]">Grounded in Excellence</span>
+          </motion.h1>
 
-        <div className="w-full lg:w-1/2 relative min-h-[400px] bg-slate-900">
-          <img
-            src="/satrap-about-one.png"
-            alt="Satrop Schools Academic Environment"
-            className="absolute inset-0 w-full h-full object-cover opacity-65 grayscale hover:grayscale-0 transition-all duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#131b2e] via-transparent to-transparent opacity-60" />
-          
-          <div className="absolute bottom-8 left-8 right-8 shadow-xl p-6 bg-[#131b2e]/95 backdrop-blur-md text-white border-l-4 border-[#006398]">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#5bb8fe]">
-              Government Approved Standard
+          <div className="w-12 h-1 bg-[#ba1a1a]" />
+
+          <motion.div
+            className="text-sm leading-relaxed text-slate-600 space-y-4 pt-2 font-sans"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
+            <p>
+              <strong>SATROP SCHOOLS</strong> is a government-approved institution providing
+              excellent foundational education for children from early years through to Key Stage 2.
+              We warmly welcome children from 3 months to 5 years for Creche and Pre-school
+              education, focusing deeply on the <strong>Montessori Method of learning</strong>.
             </p>
-            <p className="mt-1 text-slate-300 text-xs leading-relaxed font-serif">
-              Providing holistic pathways from infancy to 11 years with rigorous attention to detail.
+            <p>
+              For children from 6 years to 11 years of age, we offer an excellent primary education
+              based on a meticulously integrated <strong>British and Nigerian curricula</strong>.
             </p>
-          </div>
+            <p>
+              Our class sizes are intentionally small—with just one or two classes per year group.
+              This allows our academic staff to take great care to encourage, monitor, and stretch
+              children based directly on their individual needs, personal growth tracks, and
+              strengths.
+            </p>
+          </motion.div>
         </div>
-      </section>
+      </div>
+
+      {/* IMAGE PANEL */}
+      <div className="w-full lg:w-1/2 relative min-h-[400px] bg-[#131b2e] overflow-hidden">
+
+        {/* Full colour photo */}
+        <img
+          src="/satrap-about-one.png"
+          alt="Satrop Schools Academic Environment"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.88) saturate(1.2)" }}
+        />
+
+        {/* Blue → red brand colour bar across the top */}
+        <div
+          className="absolute top-0 left-0 right-0 z-10"
+          style={{
+            height: "5px",
+            background: "linear-gradient(to right, #006398, #ba1a1a)",
+          }}
+        />
+
+        {/* Bottom fade to navy */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#131b2e]/88" />
+
+        {/* Overlay card */}
+        <div className="absolute bottom-8 left-8 right-8 p-6 bg-[#131b2e]/90 backdrop-blur-md text-white border-l-4 border-[#006398] shadow-xl">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#5bb8fe]">
+            Government Approved Standard
+          </p>
+          <p className="mt-1 text-slate-300 text-xs leading-relaxed font-serif">
+            Providing holistic pathways from infancy to 11 years with rigorous attention to detail.
+          </p>
+        </div>
+      </div>
+
+    </section>
 
       {/* ─── 2. DYNAMIC MISSION & VISION SELECTOR ───────────────────────────── */}
       <section className="py-24 bg-[#f8fafc] border-b border-slate-200/60 relative">

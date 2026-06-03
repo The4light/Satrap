@@ -300,7 +300,9 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="lg:col-span-7 space-y-6 order-2 lg:order-1"
           >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#006398] block">Personalized Infrastructure</span>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#006398] block">
+              Personalized Infrastructure
+            </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#131b2e] tracking-tight">
               {data.classSize.title}
             </h2>
@@ -328,17 +330,40 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="lg:col-span-5 h-[450px] bg-slate-50 border border-slate-200 p-2 rounded-sm order-1 lg:order-2">
-            <img 
-              src="/Smartboard-class-size.jpg"
-              alt="Small Class Configuration Setup" 
-              className="w-full h-full object-cover rounded-xs grayscale hover:grayscale-0 transition-all duration-500" 
-            />
+          {/* ─── OFFSET GRAPHIC STACK CONTAINER ────────────────────────── */}
+          <div className="lg:col-span-5 flex items-center justify-center p-4 order-1 lg:order-2">
+            <div className="relative w-full max-w-[380px] aspect-[4/5]">
+              
+              {/* The Shifting Colored Geometric Backdrop Layer */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, x: 10, y: -10 }}
+                whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="absolute top-0 left-0 w-[90%] h-[90%] bg-[#006398] rounded-xs shadow-lg" 
+              />
+
+              {/* The Foreground Visual Image Layer with Micro Glass Framing */}
+              <motion.div 
+                initial={{ opacity: 0, x: -15, y: 15 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute bottom-0 right-0 w-[90%] h-[90%] bg-white p-2 rounded-xs shadow-2xl border border-slate-100"
+              >
+                <img 
+                  src="/Smartboard-class-size.jpg"
+                  alt="Small Class Configuration Setup" 
+                  className="w-full h-full object-cover rounded-xs" 
+                />
+              </motion.div>
+
+            </div>
           </div>
 
         </div>
       </section>
-
+      
       {/* ─── 6. LATEST UPDATES (NEWSLETTER / GALLERY FEED) ──────────── */}
       <section className="py-24 bg-[#f8fafc] border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-12">
