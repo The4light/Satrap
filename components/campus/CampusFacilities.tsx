@@ -134,7 +134,6 @@ export default function CampusFacilities() {
       </section>
 
       {/* ─── 4. HIGH-GRADE PREMIUM SHOCK-ABSORBENT TURF SPOTLIGHT ───────────── */}
-       {/* ─── PREMIUM TURF ARENA SECTION ────────────────────────────────────────── */}
       <section className="bg-[#131b2e] text-white py-24 mb-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-12">
           
@@ -155,9 +154,9 @@ export default function CampusFacilities() {
           {/* Clean, Uniform 3-Column Visual Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { src: "/playground.jpg", alt: "Turf Arena Seating and Framework" },
-              { src: "/playground2.jpg", alt: "Playground Outdoor Play Structures" },
-              { src: "/playground4.jpg", alt: "Aerial Arena Ground Perspective" }
+              { src: "/Playground.jpg", alt: "Turf Arena Seating and Framework" },
+              { src: "/Playground2.jpg", alt: "Playground Outdoor Play Structures" },
+              { src: "/Playground4.jpg", alt: "Aerial Arena Ground Perspective" }
             ].map((img, idx) => (
               <div 
                 key={idx} 
@@ -184,7 +183,6 @@ export default function CampusFacilities() {
 
         </div>
       </section>
-
       {/* ─── 5. FULL UTILITY OVERVIEW GRID (OTHER FACILITIES) ────────────────── */}
       <section className="max-w-7xl mx-auto px-6 md:px-16 mb-28">
         <div className="bg-[#eceef0]/60 p-8 md:p-12 rounded-sm border border-slate-200/60">
